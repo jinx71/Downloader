@@ -43,4 +43,4 @@ def getValue():
 
 			return render_template('index.html',runtime= runtime, filesize=file_size ,button = button, title=video.title, thumbnail=thumbnail)
 if __name__ == "__main__":  
-    app.run(host=0.0.0.0, debug=True)
+    app.run(debug=True)
