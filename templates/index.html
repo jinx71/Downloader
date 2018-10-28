@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Downloader</title>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/style.css') }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.plyr.io/3.4.4/plyr.css">
+</head>
+<body>
+	<main>
+	<form method="POST" id="container">
+	    	<input name = "downloadLink" type="text" value="" placeholder="Drop it!" id="inputField">
+	    	<input name="submitButton" type="submit" id="button" onclick=move()>
+		</form>
+		<div class="video">
+			<div class="wrapper">
+				<div class="thumbnail" >
+					{{thumbnail}}
+				</div>
+				<div class="video_info">
+				<table>					
+					<tr>
+						<th>Parameter</th>
+						<th>Value</th>
+					</tr>
+					<tr>
+						<td>Filesize</td>
+						<td>{{filesize}}</td>
+					</tr>
+					<tr>
+						<td>Title</td>
+						<td>{{title}}</td>
+					</tr>
+					<tr>
+						<td>Runtime</td>
+						<td>{{runtime}}</td>
+					</tr>
+				</table>
+				{{button}}
+				</div>
+			</div>
+			<div id="myProgress">
+	  			<div id="myBar"></div>
+			</div>
+		</div>
+		
+	</main>
+	<script>
+		function move() {
+    		var elem = document.getElementById("myBar"); 
+    		var width = 0;
+    		var id = setInterval(frame, 250);
+    		
+    	function frame() {
+        	if (width >= 100) {
+            	clearInterval(id)
+        	} else {
+            	width++; 
+            	elem.style.width = width + '%'; 
+        	}
+    	}
+	}
+	window.onload = function (){
+		var elem = document.getElementById("myBar");
+		elem.style.width = 100+'%'
+
+	}
+
+	</script>
+<script src="https://cdn.plyr.io/3.4.4/plyr.js"></script>
+<script>const player = new Plyr('#player');</script>
+</body>
+</html>
